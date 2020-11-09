@@ -28,11 +28,12 @@
   </div>
   
   <div>
-    <div> 
-      <h1>
-      Comments</h1>
-    </div>
+    
     <div  *ngIf="dish">
+      <div> 
+        <h1>
+        Comments</h1>
+      </div>
       <mat-list fxFlex>
         <mat-list-item *ngFor="let comment of dish.comments">
          
