@@ -21,6 +21,8 @@ import { HomeComponent } from './home/home.component';
 
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
+import { LeaderService } from './services/leader.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { PromotionService } from './services/promotion.service';
     AboutComponent,
     ContactComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,9 @@ import { PromotionService } from './services/promotion.service';
   ],
   //Services here in the provider
   //make a service accessible for all the components
-  providers: [DishService,PromotionService],
+  providers: [DishService,
+    PromotionService,
+    LeaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
