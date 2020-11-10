@@ -47,6 +47,7 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
+    //reset the whole form to not have errors after resiting the form
     this.feedbackFormDirective.resetForm();
   }
 
