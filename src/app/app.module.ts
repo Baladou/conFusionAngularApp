@@ -76,10 +76,12 @@ import { LoginComponent } from './login/login.component';
   ],
   //Services here in the provider
   //make a service accessible for all the components
-  providers: [DishService,
+  providers: [
+    {provide: 'BaseURL', useValue: baseURL},
+    DishService,
     PromotionService,
-    LeaderService,
-    {provide: 'BaseURL', useValue: baseURL}],
+    LeaderService
+    ],
   entryComponents: [
       LoginComponent
 ],
