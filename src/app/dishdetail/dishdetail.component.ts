@@ -111,7 +111,7 @@ export class DishdetailComponent implements OnInit {
       errmess => { this.dish = null; this.dishcopy = null; this.errMess = <any>errmess; });
     this.commentForm.reset({
       author: '',
-      rating: ['5'],
+      rating: 5,
       
       comment: ''
     });

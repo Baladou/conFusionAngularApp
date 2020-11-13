@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild ,Inject } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -7,6 +7,7 @@ import { Feedback, ContactType } from '../shared/feedback';
 
 import { flyInOut,expand } from '../animations/app.animation';
 
+import { FeedbackService } from '../services/feedback.service';
 
 @Component({
   selector: 'app-contact',
@@ -18,14 +19,20 @@ import { flyInOut,expand } from '../animations/app.animation';
     'style': 'display: block;'
     },
   animations: [
-    flyInOut(),expand()
+    flyInOut(),expand(),
   ]
 })
 export class ContactComponent implements OnInit {
-
+  
   @ViewChild('fform') feedbackFormDirective;
   feedbackForm: FormGroup;
   feedback: Feedback;
+  feedbackResult: Feedback
+  errMsg: string;
+  isLoading = false;
+  FormShow = !this.isLoading;
+  
+  
   contactType = ContactType;
   formErrors = {
     'firstname': '',
@@ -55,11 +62,14 @@ export class ContactComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, 
+    @Inject('BaseURL') private BaseURL,
+    private feedbackService: FeedbackService) {
     this.createForm();
   }
 
   ngOnInit() {
+    this.FormShow=true;
   }
 
   createForm() {
@@ -82,6 +92,21 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
+    this.isLoading=true;
+   
+    this.FormShow=false;
+    
+    this.feedbackService.PostFeedback(this.feedback)
+    
+    .subscribe(feedback =>{
+      
+      this.feedback= feedback;
+      this.isLoading=false;
+    },
+    errmsg => {this.feedback= null;this.errMsg = <any>errmsg;}
+
+    )
+    
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
@@ -91,6 +116,7 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
+   
     //reset the whole form to not have errors after resiting the form
     this.feedbackFormDirective.resetForm();
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dish } from '../shared/dish';
-import { DISHES } from '../shared/dishes';
+
 import { Observable,of } from 'rxjs';
 // enables us to delay the emitting og the item from our observable
 import { delay } from 'rxjs/operators';
