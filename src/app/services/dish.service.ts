@@ -33,9 +33,12 @@ export class DishService {
     return this.http.get<Dish[]>(baseURL + 'dishes?featured=true').pipe(map(dishes => dishes[0]))
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
+<<<<<<< HEAD
 
   getDishIds(): Observable<number[] | any> {
     return this.getDishes().pipe(map(dishes => dishes.map(dish => dish.id)))
       .pipe(catchError(error => error));
   }
+=======
+>>>>>>> parent of 030993e... RxJS Part 2
 }

@@ -7,8 +7,12 @@ import { flyInOut,expand } from '../animations/app.animation';
 
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+<<<<<<< HEAD
 import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+=======
+
+>>>>>>> parent of 030993e... RxJS Part 2
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
@@ -23,6 +27,7 @@ export class DishdetailComponent implements OnInit {
   
  // @Input()  //supply info from a comp to this comp
   dish: Dish;
+<<<<<<< HEAD
   dishIds: string[];
   prev: string;
   next: string;
@@ -54,6 +59,8 @@ export class DishdetailComponent implements OnInit {
     }
   };
 
+=======
+>>>>>>> parent of 030993e... RxJS Part 2
   
   
   constructor(private dishservice: DishService,
@@ -64,6 +71,7 @@ export class DishdetailComponent implements OnInit {
     ) {  }
 
   ngOnInit() {
+<<<<<<< HEAD
     this.createForm();
     this.dishservice.getDishIds().subscribe(dishIds => 
       this.dishIds = dishIds);
@@ -87,6 +95,10 @@ export class DishdetailComponent implements OnInit {
     const index = this.dishIds.indexOf(dishId);
     this.prev = this.dishIds[(this.dishIds.length + index - 1) % this.dishIds.length];
     this.next = this.dishIds[(this.dishIds.length + index + 1) % this.dishIds.length];
+=======
+    const id = this.route.snapshot.params['id'];
+    this.dishservice.getDish(id).subscribe(dish=>this.dish = dish);
+>>>>>>> parent of 030993e... RxJS Part 2
   }
 
   goBack(): void {
