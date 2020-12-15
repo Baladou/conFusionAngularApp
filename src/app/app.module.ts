@@ -38,6 +38,8 @@ import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { LoginComponent } from './login/login.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     AppRoutingModule,
     FormsModule ,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }) 
     
   ],
   //Services here in the provider

@@ -38,7 +38,7 @@
   <div fxFlex fxFlexOffset="20px" class="form-size" >
     <h3>Send us your Feedback</h3>
    
-  <div *ngIf="FormShow">
+  <div >
     <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field class="half-width">
@@ -80,11 +80,7 @@
       <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
     </form>
   </div>
-    <div *ngIf="isLoading">
-      <h4>Submitting Form</h4>
-      <mat-spinner></mat-spinner>
-
-    </div>
+    
     
     
   </div>
