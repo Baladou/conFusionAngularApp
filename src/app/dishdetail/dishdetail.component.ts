@@ -27,10 +27,13 @@ export class DishdetailComponent implements OnInit {
   prev: string;
   next: string;
   errMess: string;
+<<<<<<< HEAD
 
   dishcopy: Dish;
   visibility = 'shown';
 
+=======
+>>>>>>> parent of 213f8b9... Saving Changes to Server
   @ViewChild('Cform') commentFormDirective;
   commentForm: FormGroup;
   comment: Comment;
@@ -64,6 +67,7 @@ export class DishdetailComponent implements OnInit {
     this.createForm();
     this.dishservice.getDishIds().subscribe(dishIds => 
       this.dishIds = dishIds);
+<<<<<<< HEAD
       this.route.params.pipe(switchMap((params: Params) => {
          this.visibility = 'hidden'; 
       return this.dishservice.getDish(params['id']); }))
@@ -71,6 +75,12 @@ export class DishdetailComponent implements OnInit {
         this.dishcopy = dish; this.setPrevNext(dish.id);
         this.visibility = 'shown'; },
         errmess => this.errMess = <any>errmess);
+=======
+    this.route.params.pipe(switchMap(
+      (params: Params) => this.dishservice.getDish(params['id'])))
+    .subscribe(dish => { this.dish = dish; 
+      this.setPrevNext(dish.id); },errmess => this.errMess = <any>errmess);
+>>>>>>> parent of 213f8b9... Saving Changes to Server
   }
 
   setPrevNext(dishId: string) {
@@ -102,13 +112,8 @@ export class DishdetailComponent implements OnInit {
     this.comment = this.commentForm.value;
     console.log(this.comment);
     this.comment.date = Date();
-    //this.dish.comments.push(this.comment);
-    this.dishcopy.comments.push(this.comment);
-    this.dishservice.putDish(this.dishcopy)
-      .subscribe(dish => {
-        this.dish = dish; this.dishcopy = dish;
-      },
-      errmess => { this.dish = null; this.dishcopy = null; this.errMess = <any>errmess; });
+    this.dish.comments.push(this.comment);
+   
     this.commentForm.reset({
       author: '',
       rating: 5,
