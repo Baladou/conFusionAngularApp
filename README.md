@@ -6,7 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Ro run the application
-npm install.
-ng build --prod --source-map.
-http-server-spa dist/conFusion/ index.html 8080.
+## Install dependencies
+npm install
+## Build the application
+ng build --prod --source-map
+## Run the application
+http-server-spa dist/conFusion/ index.html 8080
